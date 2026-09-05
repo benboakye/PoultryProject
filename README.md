@@ -2,7 +2,9 @@
 
 National Poultry Registration, Input Subsidy & Traceability System for Ghana.
 
-Status: planning; application development has not started.
+Status: Stage 0 in progress. The HTTP/configuration skeleton is implemented; business modules are not yet available.
+
+- [Run locally and check the code](docs/development.md)
 
 - [Development stages and acceptance gates](docs/development-plan.md)
 - [Requirements coverage and regression checklist](docs/requirements.md)

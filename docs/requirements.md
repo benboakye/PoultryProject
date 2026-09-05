@@ -1,6 +1,8 @@
 # Requirements coverage register
 
-Source: `reference/PoultryTrak-Project-Documentation-v1.0.pdf` and the supplied architecture PNG. This register is a coverage index; detailed source rules remain applicable even when summarized here. Every row is **pending implementation**. Add code/test paths and verification evidence when work is completed; a passing test does not establish a field pilot outcome.
+Source: `reference/PoultryTrak-Project-Documentation-v1.0.pdf` and the supplied architecture PNG. This register is a coverage index; detailed source rules remain applicable even when summarized here. No row is fully complete. R-02, R-21, R-23 and R-26 are in progress for the HTTP/configuration slice only; all others remain pending. Add code/test paths and verification evidence when work is completed; a passing test does not establish a field pilot outcome.
+
+Initial evidence paths: `app/Support/Config.php`, `app/Support/Http/`, `public/index.php`, `tests/Unit/ConfigTest.php`, `tests/Feature/ApplicationTest.php`, `.github/workflows/ci.yml`. These cover configuration, liveness, route/method errors and HTTP safeguards; they do not establish domain, database or authentication coverage.
 
 | ID | Source | Required coverage | Stage |
 |---|---|---|---|
