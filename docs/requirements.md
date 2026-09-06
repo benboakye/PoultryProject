@@ -4,6 +4,8 @@ Source: `reference/PoultryTrak-Project-Documentation-v1.0.pdf` and the supplied 
 
 Initial evidence paths: `app/Support/Config.php`, `app/Support/Http/`, `public/index.php`, `tests/Unit/ConfigTest.php`, `tests/Feature/ApplicationTest.php`, `.github/workflows/ci.yml`. These cover configuration, liveness, route/method errors and HTTP safeguards; they do not establish domain, database or authentication coverage.
 
+Database slice evidence (R-02/R-03/R-21/R-26, partial): `app/Support/Database/`, `database/migrations/0001_regions.sql` through `0008_role_catalogue.sql`, `scripts/migrate.php`, `tests/Integration/MigratorTest.php` and `tests/Unit/ConnectionFactoryTest.php`. Covers migration/connection safety and initial identity geography constraints. R-03 now has schema support in progress, but permission and record-scope enforcement remain pending.
+
 | ID | Source | Required coverage | Stage |
 |---|---|---|---|
 | R-01 | 3-5, 25-26 | Registry/entitlement/traceability scope, all role populations, non-goals, pilot milestones, risks and measured success metrics | All |

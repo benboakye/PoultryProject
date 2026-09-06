@@ -1,6 +1,6 @@
 # Local development
 
-Requires PHP 8.2+ and Composer 2. PHP extensions for this slice: JSON; development tools also require DOM, XML, XMLWriter and mbstring. OpenSSL and ZIP support dependency installation. Later database work requires MySQL 8.0+ and pdo_mysql; SQLite will not substitute for database integration tests.
+Requires PHP 8.2+ and Composer 2. PHP extensions: JSON, PDO and pdo_mysql; development tools also require DOM, XML, XMLWriter and mbstring. OpenSSL and ZIP support dependency installation. Database work requires MySQL >=8.0.16; SQLite will not substitute for database integration tests.
 
 ```sh
 composer install
@@ -17,10 +17,10 @@ Checks: `composer validate --strict`, `composer check` (PSR-12, maximum-level PH
 
 ## Current slice
 
-Implemented: Composer skeleton, validated application configuration, public front controller, temporary home page, liveness endpoint, method/route error envelopes, security headers, correlation IDs and sanitized failure response.
+Implemented: Composer skeleton, validated application configuration, public front controller, temporary home page, liveness endpoint, method/route error envelopes, security headers, correlation IDs and sanitized failure response. The database slice adds a hardened PDO connection, migration ledger/runner, seven reference/identity tables, a ten-role catalogue and real-MySQL integration tests. See [migration instructions](runbooks/migrations.md).
 
-Not implemented: database/schema, migrations, authentication, permissions, audit ledger, Carbon assets, domain modules or production infrastructure. Consequently no section 23.2 business regression scenario or field milestone is marked passed.
+Not implemented: authentication, permission enforcement, scoped domain repositories, audit ledger, Carbon assets, domain modules or production infrastructure. Consequently no section 23.2 business regression scenario or field milestone is marked passed.
 
-Next slice: reviewed MySQL migrations and reference/identity schema, migration dry-run and real database integration harness; then authentication, scope enforcement and append-only audit.
+Next slices: authentication/session persistence, scope enforcement and append-only audit. The database test harness now exists; no real farmer records or application accounts are seeded.
 
 Runtime provenance for the initial local check: [official PHP Windows downloads](https://www.php.net/downloads.php?os=windows&version=8.4) and [official Composer downloads](https://getcomposer.org/download/). Runtime binaries stay outside the repository.

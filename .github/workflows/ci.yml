@@ -5,6 +5,21 @@ permissions:
 jobs:
   php:
     runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: synthetic-ci-password
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -psynthetic-ci-password"
+          --health-interval=10s --health-timeout=5s --health-retries=10
+    env:
+      TEST_DB_HOST: 127.0.0.1
+      TEST_DB_PORT: 3306
+      TEST_DB_USERNAME: root
+      TEST_DB_PASSWORD: synthetic-ci-password
     strategy:
       matrix:
         php: ['8.2', '8.4']
@@ -13,7 +28,7 @@ jobs:
       - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          extensions: mbstring, dom, xml, xmlwriter
+          extensions: mbstring, dom, xml, xmlwriter, pdo_mysql
           coverage: none
           tools: composer:v2
       - run: composer validate --strict

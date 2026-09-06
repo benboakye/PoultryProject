@@ -15,7 +15,7 @@ Preserve the six phases and durations in section 25. The subdivisions below make
 | 4. Intelligence and production readiness | Phase 4 | 8 weeks | 0-3 | National reporting, operational assurance and scale validation |
 | 5. National rollout | Phase 5 | Continuous | 4 and launch approvals | Regional onboarding, training and measured outcomes |
 
-Stage 0 is in progress: the HTTP/configuration skeleton and initial automated checks are implemented (see `development.md`). Authentication, database, RBAC, audit and the Carbon shell remain pending. Stages 1-5 are not started; no stage acceptance gate is complete.
+Stage 0 is in progress: HTTP/configuration, initial CI, reference/identity migrations and real-MySQL integration checks are implemented (see `development.md`). Authentication, RBAC enforcement, audit and the Carbon shell remain pending. Stages 1-5 are not started; no stage acceptance gate is complete.
 
 ## Stage 0: Foundation
 
