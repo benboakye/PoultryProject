@@ -1,0 +1,32 @@
+{
+    "name": "poultrytrak/application",
+    "description": "PoultryTrak registry, entitlement and traceability system",
+    "type": "project",
+    "license": "proprietary",
+    "require": {
+        "php": "^8.2",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "ext-pdo_mysql": "*",
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5",
+        "squizlabs/php_codesniffer": "^3.13",
+        "phpstan/phpstan": "^2.1"
+    },
+    "autoload": {"psr-4": {"PoultryTrak\\": "app/"}},
+    "autoload-dev": {"psr-4": {"PoultryTrak\\Tests\\": "tests/"}},
+    "config": {
+        "sort-packages": true,
+        "platform": {"php": "8.2.0"},
+        "allow-plugins": {}
+    },
+    "scripts": {
+        "test": "phpunit",
+        "lint": "phpcs",
+        "analyse": "phpstan analyse --no-progress",
+        "check": ["@lint", "@analyse", "@test"],
+        "serve": "@php -S 127.0.0.1:8080 -t public public/router.php"
+    }
+}

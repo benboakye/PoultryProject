@@ -1,0 +1,23 @@
+CREATE TABLE users (
+    id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    uuid CHAR(36) NOT NULL UNIQUE,
+    full_name VARCHAR(160) NOT NULL,
+    email VARCHAR(190) NULL UNIQUE,
+    msisdn VARCHAR(20) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NULL,
+    pin_hash VARCHAR(255) NULL,
+    status ENUM('active','suspended','locked','disabled') NOT NULL DEFAULT 'active',
+    region_id TINYINT UNSIGNED NULL,
+    district_id SMALLINT UNSIGNED NULL,
+    mfa_secret VARBINARY(255) NULL,
+    failed_attempts TINYINT UNSIGNED NOT NULL DEFAULT 0,
+    locked_until DATETIME NULL,
+    last_login_at DATETIME NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    INDEX idx_users_scope (region_id, district_id),
+    INDEX idx_users_status (status),
+    CONSTRAINT chk_user_district_region CHECK (district_id IS NULL OR region_id IS NOT NULL),
+    CONSTRAINT fk_user_region FOREIGN KEY (region_id) REFERENCES regions(id),
+    CONSTRAINT fk_user_district FOREIGN KEY (district_id, region_id) REFERENCES districts(id, region_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

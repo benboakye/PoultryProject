@@ -1,0 +1,9 @@
+/vendor/
+/.env
+/.env.*
+!/.env.example
+/.phpunit.cache/
+/storage/*
+!/storage/.gitkeep
+/build/
+*.log

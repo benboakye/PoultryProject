@@ -1,0 +1,8 @@
+parameters:
+    level: max
+    paths:
+        - app
+        - public
+        - config
+        - scripts
+    tmpDir: build/phpstan
