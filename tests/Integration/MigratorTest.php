@@ -170,7 +170,9 @@ final class MigratorTest extends TestCase
 
     public function testConnectionUsesNativePreparesUtcAndStrictMode(): void
     {
-        self::assertFalse($this->pdo->getAttribute(PDO::ATTR_EMULATE_PREPARES));
+        // PDO drivers report disabled attributes as either false or integer 0.
+        // Strict membership still rejects enabled values (true/1).
+        self::assertContains($this->pdo->getAttribute(PDO::ATTR_EMULATE_PREPARES), [false, 0]);
         self::assertSame('+00:00', $this->pdo->query('SELECT @@session.time_zone')->fetchColumn());
         self::assertStringContainsString('STRICT_TRANS_TABLES', $this->pdo->query('SELECT @@sql_mode')->fetchColumn());
         $this->expectException(PDOException::class);
